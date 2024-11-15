@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+     <!-- <video autoplay loop muted id="background-video">
+        <source src="v2.mp4" type="video/mp4">
+        Your browser does not supports the video.
+      </video> -->
+    <main>
+        <div class="main-container">
+            <h1 class="heading"><i class="fa-solid fa-cloud-sun"></i> Weather</h1> 
+
+            <header class="input-container"> 
+                <br> <br>
+                <input class="search-box" type="text" placeholder="Search city">
+                <span>
+                    <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </span>
+            </header>
+
+            <section class="display-container">
+                <br> <br> <br> <br>
+                <h4 id="location"><i class="fa-solid fa-location-dot"></i> NEW DELHI</h4>
+                <div class="weather-container">
+                    <div class="weather-info">
+                        <h5 id="temp">47°</h5>
+                        <h6 id="feel">Feels like 50°</h6>
+                    </div>
+                    <div class="weather-icon">
+                        <img src="/arry/weather/clear.svg">
+                        <h5 id="weather">Sunny</h5>
+                    </div>
+                </div>
+            </section>
+
+            <section class="forecast-container">
+                <div class="forecast-info">
+                    <div id="conditions">
+                        <div id="humid">
+                            <span>
+                                <i class="fa-solid fa-droplet"></i>
+                            </span>
+                            <div>Humidity:</div>
+                            <p>55%</p>
+                        </div>
+                        <div id="wind">
+                            <span>
+                                <i class="fa-solid fa-wind"></i>
+                            </span>
+                            <div>Wind:</div>
+                            <p>9km/hr</p>
+                        </div>
+                    </div>   
+                </div>
+                <hr>
+                <div class="forecast-item">
+                    <div id="time">
+                        <h5>Now</h5>
+                        <span><img src="/arry/weather/clear.svg"></span>
+                        <h6>47°</h6>
+                    </div>
+                    <div id="time">
+                        <h5>2PM</h5>
+                        <span><img src="/arry/weather/clear.svg"></span>
+                        <h6>47°</h6>
+                    </div>
+                    <div id="time">
+                        <h5>3PM</h5>
+                        <span><img src="/arry/weather/clear.svg"></span>
+                        <h6>47°</h6>
+                    </div>
+                    <div id="time">
+                        <h5>4PM</h5>
+                        <span><img src="/arry/weather/clear.svg"></span>
+                        <h6>46°</h6>
+                    </div>
+                    <div id="time">
+                        <h5>5PM</h5>
+                        <span><img src="/arry/weather/clouds.svg"></span>
+                        <h6>45°</h6>
+                    </div>
+                </div>
+            </section>
+
+            <section class="prediction-container">
+                <div class="prediction-data">
+                    <div id="day">
+                        <h5>Today</h5>
+                        <img src="/arry/weather/clear.svg">
+                        <h6>33°</h6>
+                        <h6>47°</h6>
+                    </div>
+                    <hr>
+                    <div id="day">
+                        <h5>Tomorrow</h5>
+                        <img src="/arry/weather/clear.svg">
+                        <h6>33°</h6>
+                        <h6>47°</h6>
+                    </div>
+                    <hr>
+                    <div id="day">
+                        <h5>Wednesday</h5>
+                        <img src="/arry/weather/clear.svg">
+                        <h6>33°</h6>
+                        <h6>47°</h6>
+                    </div>
+                    <hr>
+                    <div id="day">
+                        <h5>Thursday</h5>
+                        <img src="/arry/weather/clear.svg">
+                        <h6>33°</h6>
+                        <h6>47°</h6>
+                    </div>
+                    <hr>
+                    <div id="day">
+                        <h5>Friday</h5>
+                        <img src="/arry/weather/clear.svg">
+                        <h6>33°</h6>
+                        <h6>47°</h6>
+                    </div>
+                    <hr>
+                    <div id="day">
+                        <h5>Saturday</h5>
+                        <img src="/arry/weather/clear.svg">
+                        <h6>33°</h6>
+                        <h6>47°</h6>
+                    </div>
+                    <hr>
+                    <div id="day">
+                        <h5>Sunday</h5>
+                        <img src="/arry/weather/clear.svg">
+                        <h6>33°</h6>
+                        <h6>47°</h6>
+                    </div>
+                    <hr>
+                    <div id="day">
+                        <h5>Monday</h5>
+                        <img src="/arry/weather/clear.svg">
+                        <h6>33°</h6>
+                        <h6>47°</h6>
+                    </div>
+                    <hr>
+                    <div id="day">
+                        <h5>Tuesday</h5>
+                        <img src="/arry/weather/clear.svg">
+                        <h6>33°</h6>
+                        <h6>47°</h6>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

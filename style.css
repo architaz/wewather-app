@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-color: #43536c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+#background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+  }
+
+  #background-video::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Add a dark overlay to the video */
+  }
+
+.main-container {
+    height: 650px;
+    width: 500px;
+    z-index: 1;
+    margin-top: 1%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5%;
+    border: 1px solid rgba(190, 177, 177, 1.5);
+    /* display: flex; */
+    justify-content: center;
+    background-image: url(combined\ bg.jpg);
+    background-size: cover;
+}
+
+h1{
+    text-decoration: solid;
+    color: rgb(223, 222, 222);
+    text-align: center;
+    text-shadow: 2px 2px 2px #000000;
+    position: absolute;
+    display: inline-block;
+    padding-left: 150px;
+}
+
+.main-container:hover .heading {
+    color: white;
+}
+
+.input-container {
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    padding-left: 2.5%;
+    /* margin-bottom: 0; */
+}
+
+.search-box {
+    margin-top: 12px;
+    width: 400px;
+    height: 30px;
+    border-radius: 90px;
+    border: 2px solid transparent;
+    background-color: rgba(0, 0, 0, .25);
+    color: aliceblue;
+    text-align: center;
+    font-weight: 500px;
+    backdrop-filter: blur(5opx);
+}
+
+.search-box::placeholder {
+    color: aliceblue;
+}
+
+.search-box:focus {
+    border: 2px solid #5678b0;
+    background-color: transparent;
+}
+
+.search-button {
+    width: 25px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    border: 2px solid transparent;
+}
+
+.search-button:hover {
+    background-color: rgb(198, 228, 255);
+}
+
+.search-button:active {
+    background-color: #5678b0;
+}
+
+.display-container {
+    /* position: fixed; */
+    color: aliceblue;
+    margin-bottom: 20px;
+}
+
+#location {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: whitesmoke;
+    margin-top: 5px;
+    margin-bottom: -10px;
+}
+
+#temp {
+    font-family: gill sans;
+    display: flex;
+    justify-content: center;
+    font-size: 70px;
+    font-weight: lighter;
+    text-shadow: 4px 3px 6px #000000;
+    /* margin-top: -20px; */
+}
+
+#feel{
+    font-size: 15px;
+    /* font-weight: normal; */
+}
+
+#weather {
+    font-size: 15px;
+}
+
+.weather-container {
+    width: 100%;
+    display: flex; /* Use flexbox */
+    justify-content: space-evenly; /* Space elements evenly */
+    align-items: flex-end; /* Center elements vertically */
+    align-content: flex-end;
+    text-align: center;
+  }
+
+.weather-info, .weather-icon {
+    position: relative;
+    width: 100%;
+    padding-left: 75px;
+    padding-right: 70px;
+    box-sizing: border-box;
+  }
+
+.forecast-container {
+    display: inline-block;
+    position: relative;
+    height: 175px;
+    width: 97%;
+    padding: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(195, 211, 224, 0.25);
+    border-radius: 10px;
+}
+
+.forecast-info {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    margin-top: -14px;
+    color: aliceblue;
+}
+
+#conditions{
+    width: 50%;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    gap: 80%;
+}
+
+#conditions span {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+    font-size: 15px;
+    padding-right: 10px;
+    padding-left: 3px;
+}
+
+#conditions div {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 90%;
+}
+
+#conditions p {
+    padding-left: 8px;
+}
+
+hr {
+    opacity: 0.65;
+}
+
+.forecast-item {
+    display: flex;
+    color: aliceblue;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    /* overflow: scroll; */
+}
+
+.forecast-item div {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    width: 18%;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 12px;
+    padding-bottom: 5px;
+}
+
+.forecast-item div:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.forecast-item div h6 {
+    margin-top: -5px;
+    font-size: 15px;
+}
+
+/* #time:hover h5 h6 {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+} */
+
+/* .forecast-item div h5 h6:hover {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+} */
+
+#time img {
+    display: inline;
+    height: 55px;
+}
+
+.prediction-data {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(195, 211, 224, 0.25);
+    border-radius: 10px;
+    height: 175px;
+    width: 97%;
+    margin-top: 10px;
+    color: aliceblue;
+    overflow: scroll;
+}
+
+.prediction-data::-webkit-scrollbar {
+    height: 0px;
+    width: 15px;
+}
+
+.prediction-data::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 110px;
+}
+
+.prediction-data::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 110px;
+}
+
+.prediction-data div {
+    position: relative;
+    display: flex;
+    text-align: justify;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+
+.prediction-data h6 {
+    font-size: 13px;
+}
+
+.prediction-data div img {
+    height: 30px;
+}
+
+.prediction-container hr {
+    opacity: 0.35;
+}
+
+#day h5 {
+    width: 15%;
+}
+
+#day img {
+    width: 8%;
+}
+
+#day h6 {
+    width: 15%;
+}
