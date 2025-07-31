@@ -1,6 +1,4 @@
-// script.js
-
-const apiKey = '4e8f85db32f7aecbfba1ac497ffddf04'; 
+const apiKey = '4e8f85db32f7aecbfba1ac497ffddf04';
 const searchButton = document.querySelector('.search-button');
 const searchBox = document.querySelector('.search-box');
 const locationDisplay = document.getElementById('location');
@@ -19,11 +17,10 @@ async function fetchWeather(city) {
         if (!response.ok) {
             throw new Error('City not found');
         }
-        const data = await response.json();
-        return data;
+        return await response.json();
     } catch (error) {
         alert(error.message);
-        console.error(error);
+        return null;
     }
 }
 
@@ -34,11 +31,10 @@ async function fetchForecast(city) {
         if (!response.ok) {
             throw new Error('City not found');
         }
-        const data = await response.json();
-        return data;
+        return await response.json();
     } catch (error) {
         alert(error.message);
-        console.error(error);
+        return null;
     }
 }
 
@@ -53,49 +49,92 @@ function displayWeather(data) {
     windDisplay.textContent = `${wind.speed} km/hr`;
 
     // Update weather icon
-    const iconUrl = `./weather/${weather[0].icon}.svg`; // Assuming the icon names match the OpenWeatherMap icon codes
-    document.querySelector('.weather-icon img').src = iconUrl;
+    updateWeatherIcon(weather[0].main);
+}
+
+// Function to update weather icon
+function updateWeatherIcon(weatherCondition) {
+    const weatherIcon = document.getElementById('weather-icon');
+    let iconSrc;
+
+    switch (weatherCondition.toLowerCase()) {
+        case 'clear':
+            iconSrc = '/arry/weather/clear.svg';
+            break;
+        case 'clouds':
+            iconSrc = '/arry/weather/clouds.svg';
+            break;
+        case 'rain':
+            iconSrc = '/arry/weather/rain.svg';
+            break;
+        case 'snow':
+            iconSrc = '/arry/weather/snow.svg';
+            break;
+        case 'thunderstorm':
+            iconSrc = '/arry/weather/thunderstorm.svg';
+            break;
+        default:
+            iconSrc = '/arry/weather/default.svg';
+            break;
+    }
+
+    weatherIcon.src = iconSrc;
 }
 
 // Function to display forecast data
 function displayForecast(data) {
-    forecastContainer.innerHTML = ''; // Clear previous forecast
-    const forecastItems = data.list.filter(item => item.dt_txt.includes('15:00')); // Get daily forecasts
-
+    forecastContainer.innerHTML = '';
+    
+    // Get the next 5 time periods (3-hour intervals)
+    const forecastItems = data.list.slice(0, 5);
+    
     forecastItems.forEach(item => {
-        const forecastDiv = document.createElement('div');
-        forecastDiv.innerHTML = `
-            <h5>${new Date(item.dt * 1000).toLocaleString('en-US', { weekday: 'long' })}</h5>
-            <img src="${forecastIconUrl}" alt="${item.weather[0].description}">
-            <h6>${Math.round(item.main.temp)}°</h6>
+        const time = new Date(item.dt * 1000).toLocaleTimeString([], { hour: '2-digit' });
+        const temp = Math.round(item.main.temp);
+        const icon = item.weather[0].main.toLowerCase();
+        
+        const forecastElement = document.createElement('div');
+        forecastElement.classList.add('time');
+        forecastElement.innerHTML = `
+            <h5>${time}</h5>
+            <span><img src="/arry/weather/${icon}.svg"></span>
+            <h6>${temp}°</h6>
         `;
-        forecastContainer.appendChild(forecastDiv);
+        forecastContainer.appendChild(forecastElement);
     });
 }
 
-// Function to handle search
-async function handleSearch() {
-    const city = searchBox.value.trim();
-    if (city) {
-        const weatherData = await fetchWeather(city);
-        if (weatherData) {
-            const forecastData = await fetchForecast(city);
-            if (forecastData) {
-                displayWeather(weatherData);
-                displayForecast(forecastData);
-            }
-        }
-    } else {
-        alert('Please enter a city name');
-    }
-}
-
 // Event listener for search button
-searchButton.addEventListener('click', handleSearch);
+searchButton.addEventListener('click', async () => {
+    const city = searchBox.value.trim();
+    if (!city) return;
+    
+    const weatherData = await fetchWeather(city);
+    if (weatherData) {
+        displayWeather(weatherData);
+        const forecastData = await fetchForecast(city);
+        if (forecastData) {
+            displayForecast(forecastData);
+        }
+    }
+});
 
-// Optional: Handle enter key press in search box
-searchBox.addEventListener('keypress', function (event) {
-    if (event.key === 'Enter') {
-        handleSearch();
+// Add event listener for Enter key
+searchBox.addEventListener('keypress', async (e) => {
+    if (e.key === 'Enter') {
+        searchButton.click();
+    }
+});
+
+// Initialize with default city
+window.addEventListener('load', async () => {
+    const defaultCity = 'New Delhi';
+    const weatherData = await fetchWeather(defaultCity);
+    if (weatherData) {
+        displayWeather(weatherData);
+        const forecastData = await fetchForecast(defaultCity);
+        if (forecastData) {
+            displayForecast(forecastData);
+        }
     }
 });
