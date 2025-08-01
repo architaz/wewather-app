@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
     <link rel="stylesheet" href="/style.css">
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
@@ -21,9 +20,8 @@
             <header class="input-container"> 
                 <br> <br>
                 <input class="search-box" type="text" placeholder="Search city">
-                <span>
-                    <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </span>
+                <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div id="error-message" class="error-message" style="display: none;"></div>
             </header>
 
             <section class="display-container">
@@ -44,119 +42,25 @@
             <section class="forecast-container">
                 <div class="forecast-info">
                     <div id="conditions">
-                        <div id="humid">
-                            <span>
-                                <i class="fa-solid fa-droplet"></i>
-                            </span>
-                            <div>Humidity:</div>
-                            <p>55%</p>
+                        <div class="condition-item">
+                            <i class="fa-solid fa-droplet"></i>
+                            <span>Humidity: <span id="humidity">55%</span></span>
                         </div>
-                        <div id="wind">
-                            <span>
-                                <i class="fa-solid fa-wind"></i>
-                            </span>
-                            <div>Wind:</div>
-                            <p>9km/hr</p>
+                        <div class="condition-item">
+                            <i class="fa-solid fa-wind"></i>
+                            <span>Wind: <span id="wind-speed">9 km/h</span></span>
                         </div>
                     </div>   
                 </div>
                 <hr>
-                <div class="forecast-item">
-                    <div class="time">
-                        <h5>Now</h5>
-                        <span><img src="/arry/weather/clear.svg"></span>
-                        <h6>47°</h6>
-                    </div>
-                    <div class="time">
-                        <h5>2PM</h5>
-                        <span><img src="/arry/weather/clear.svg"></span>
-                        <h6>47°</h6>
-                    </div>
-                    <div class="time">
-                        <h5>3PM</h5>
-                        <span><img src="/arry/weather/clear.svg"></span>
-                        <h6>47°</h6>
-                    </div>
-                    <div class="time">
-                        <h5>4PM</h5>
-                        <span><img src="/arry/weather/clear.svg"></span>
-                        <h6>46°</h6>
-                    </div>
-                    <div class="time">
-                        <h5>5PM</h5>
-                        <span><img src="/arry/weather/clouds.svg"></span>
-                        <h6>45°</h6>
-                    </div>
-                </div>
+                <div class="forecast-item" id="hourly-forecast"></div>
             </section>
 
             <section class="prediction-container">
-                <div class="prediction-data">
-                    <div class="day">
-                        <h5>Today</h5>
-                        <img src="/arry/weather/clear.svg">
-                        <h6>33°</h6>
-                        <h6>47°</h6>
-                    </div>
-                    <hr>
-                    <div class="day">
-                        <h5>Tomorrow</h5>
-                        <img src="/arry/weather/clear.svg">
-                        <h6>33°</h6>
-                        <h6>47°</h6>
-                    </div>
-                    <hr>
-                    <div class="day">
-                        <h5>Wednesday</h5>
-                        <img src="/arry/weather/clear.svg">
-                        <h6>33°</h6>
-                        <h6>47°</h6>
-                    </div>
-                    <hr>
-                    <div class="day">
-                        <h5>Thursday</h5>
-                        <img src="/arry/weather/clear.svg">
-                        <h6>33°</h6>
-                        <h6>47°</h6>
-                    </div>
-                    <hr>
-                    <div class="day">
-                        <h5>Friday</h5>
-                        <img src="/arry/weather/clear.svg">
-                        <h6>33°</h6>
-                        <h6>47°</h6>
-                    </div>
-                    <hr>
-                    <div class="day">
-                        <h5>Saturday</h5>
-                        <img src="/arry/weather/clear.svg">
-                        <h6>33°</h6>
-                        <h6>47°</h6>
-                    </div>
-                    <hr>
-                    <div class="day">
-                        <h5>Sunday</h5>
-                        <img src="/arry/weather/clear.svg">
-                        <h6>33°</h6>
-                        <h6>47°</h6>
-                    </div>
-                    <hr>
-                    <div class="day">
-                        <h5>Monday</h5>
-                        <img src="/arry/weather/clear.svg">
-                        <h6>33°</h6>
-                        <h6>47°</h6>
-                    </div>
-                    <hr>
-                    <div class="day">
-                        <h5>Tuesday</h5>
-                        <img src="/arry/weather/clear.svg">
-                        <h6>33°</h6>
-                        <h6>47°</h6>
-                    </div>
-                </div>
+                <div class="prediction-data" id="daily-forecast"></div>
             </section>
         </div>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
